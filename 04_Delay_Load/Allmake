@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Run from this directory
+cd ${0%/*} ||exit 1     
+
+# Generate a project buildsystem
+cmake -S. -Bbuild \
+    -DCMAKE_BUILD_TYPE=Release \
+    -G "Visual Studio 16 2019" -A x64
+
+# cmake -S. -Bbuild \
+#     -DCMAKE_BUILD_TYPE=Release \
+#     -G "MinGW Makefiles"
+
+# Build a project
+cmake --build build --config Debug
+
+# Install a project
+cmake --install build --config Debug
+
+
